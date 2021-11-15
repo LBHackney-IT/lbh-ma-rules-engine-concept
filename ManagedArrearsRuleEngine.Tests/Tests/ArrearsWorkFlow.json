@@ -1,0 +1,25 @@
+[
+  {
+    "WorkflowName": "ArrearsWorkFlow",
+    "Rules": [
+      {
+        "RuleName": "StageRule2B",
+        "ErrorMessage": "StageRule2A Failed",
+        "Enabled": true,
+        "ErrorType": 0,
+        "RuleExpressionType": 0,
+        "Expression": "account.ArrearsAmount>10 &&\nstage.Action==2",
+        "SuccessEvent": "Letter 1 sent"
+      },
+      {
+        "RuleName": "StageRule1A",
+        "ErrorMessage": "StageRule1A Failed",
+        "Enabled": true,
+        "ErrorType": 0,
+        "RuleExpressionType": 0,
+        "Expression": "customer.HasValidPhoneNumber==true &&\naccount.IsFirstTimeInArrears==true && \naccount.ArrearsAmount>5 &&\naccount.IsAccountPaused==false &&\nstage.Action==0 ",
+        "SuccessEvent": "SMS sent"
+      }
+    ]
+  }
+]
